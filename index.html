@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EcoHistory - 역사로 배우는 환경 실천 플랫폼</title>
+
+  <style>
+    /* === 기본 === */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background: #f4f6f8;
+      color: #333;
+      line-height: 1.7;
+    }
+
+    header {
+      background: linear-gradient(135deg, #184e77, #34a0a4);
+      color: white;
+      text-align: center;
+      padding: 70px 20px;
+    }
+
+    header h1 { font-size: 2.7em; margin-bottom: 10px; }
+    header p { font-size: 1.1em; opacity: 0.9; }
+
+    nav {
+      background: #1e6f5c;
+      text-align: center;
+      padding: 12px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    nav a:hover { color: #ffe082; }
+
+    section {
+      max-width: 1000px;
+      margin: 60px auto;
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+
+    h2 {
+      color: #1e6f5c;
+      border-left: 5px solid #52b788;
+      padding-left: 10px;
+      margin-bottom: 25px;
+    }
+
+    .card {
+      background: #e8f5e9;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .card h3 { color: #1b4332; margin-bottom: 10px; }
+
+    /* === 실천 폼 === */
+    #missionForm {
+      margin-top: 15px;
+    }
+    #missionInput {
+      width: 70%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    #missionForm button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      background: #1e6f5c;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+    #missionForm button:hover { background: #184e77; }
+
+    #missions p { margin: 8px 0; }
+
+    .point-box {
+      background: #eaf8f3;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    /* === 진행률 바 === */
+    .progress-bar {
+      background: #ccc;
+      height: 12px;
+      border-radius: 6px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+    .progress {
+      height: 12px;
+      background: #52b788;
+      width: 0%;
+      transition: width 0.3s;
+    }
+
+    /* === 퀴즈 === */
+    .quiz-question { font-weight: bold; margin-bottom: 10px; }
+    .quiz-options button {
+      display: block;
+      width: 100%;
+      margin: 5px 0;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      background: #f4f9f4;
+      cursor: pointer;
+      text-align: left;
+    }
+    .quiz-options button:hover { background: #dff0df; }
+    #quizResult { margin-top: 10px; font-weight: bold; }
+
+    /* === 푸터 === */
+    footer {
+      text-align: center;
+      background: #184e77;
+      color: white;
+      padding: 35px 0;
+      margin-top: 100px;
+      font-size: 0.9em;
+    }
+
+    @media (max-width: 700px) {
+      header h1 { font-size: 2em; }
+      #missionInput { width: 100%; margin-bottom: 10px; }
+      #missionForm button { width: 100%; margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🌍 EcoHistory</h1>
+    <p>역사를 통해 배우는 지속 가능한 미래</p>
+  </header>
+
+  <nav>
+    <a href="#overview">소개</a>
+    <a href="#learn">학습</a>
+    <a href="#activity">활동</a>
+    <a href="#mission">실천</a>
+    <a href="#quiz">퀴즈</a>
+    <a href="#ranking">랭킹</a>
+  </nav>
+
+  <!-- === 프로젝트 소개 === -->
+  <section id="overview">
+    <h2>📘 프로젝트 개요</h2>
+    <p>
+      <strong>EcoHistory</strong>는 역사 속 환경 사건을 통해
+      오늘날의 기후 위기를 돌아보고,  
+      개인의 작은 실천이 미래의 역사를 바꿀 수 있음을 배우는
+      <b>학습형 환경 실천 플랫폼</b>입니다.
+    </p>
+    <ul style="margin-top:10px; line-height:1.8;">
+      <li>📚 역사 사례를 통해 환경 문제의 본질 이해</li>
+      <li>🌱 나의 실천 활동 기록 및 포인트 획득</li>
+      <li>🏆 랭킹 시스템을 통한 학습 동기 강화</li>
+      <li>🧭 퀴즈 및 토론으로 지식 심화</li>
+    </ul>
+  </section>
+
+  <!-- === 학습 섹션 === -->
+  <section id="learn">
+    <h2>📖 역사 속 환경 교훈</h2>
+
+    <div class="card">
+      <h3>마야 문명의 붕괴 (9세기)</h3>
+      <p>
+        과도한 산림 남벌과 물 부족이 문명의 몰락을 초래했습니다.
+        인간 활동이 환경에 미친 영향을 이해할 수 있는 대표적 사례입니다.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>조선 후기의 소빙기 (17세기)</h3>
+      <p>
+        기후 변화로 식량 생산이 어려워지자, 정부는 산림보호 정책을 시행했습니다.
+        제도적 대응이 기후 위기 극복의 핵심임을 보여줍니다.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>산업혁명과 탄소 시대의 시작</h3>
+      <p>
+        인류의 기술 발전은 편리함을 주었지만, 동시에 환경 파괴의 시발점이 되었습니다.
+        <b>기술 발전과 지속가능성의 균형</b>이 중요합니다.
+      </p>
+    </div>
+  </section>
+
+  <!-- === 활동 섹션 === -->
+  <section id="activity">
+    <h2>🧭 학습 활동</h2>
+    <ol>
+      <li><b>탐구:</b> 마야 문명의 붕괴 원인을 3가지로 정리해보세요.</li>
+      <li><b>비교:</b> 과거의 환경위기와 현재 기후변화의 공통점은 무엇인가요?</li>
+      <li><b>토론:</b> “기후위기는 기술의 문제가 아니라 인간의 태도 문제다.” 당신의 의견은?</li>
+    </ol>
+  </section>
+
+  <!-- === 실천 섹션 === -->
+  <section id="mission">
+    <h2>🌿 나의 실천 등록</h2>
+    <p>환경 보호를 위한 나만의 실천을 기록해보세요.</p>
+
+    <form id="missionForm">
+      <input type="text" id="missionInput" placeholder="예: 일회용컵 대신 텀블러 사용하기" required>
+      <button type="submit">등록</button>
+    </form>
+
+    <div id="missions"></div>
+
+    <div class="point-box">
+      <p>💚 현재 포인트: <span id="points">0</span>점</p>
+      <div class="progress-bar"><div class="progress" id="progress"></div></div>
+    </div>
+  </section>
+
+  <!-- === 퀴즈 섹션 === -->
+  <section id="quiz">
+    <h2>🧠 이해도 퀴즈</h2>
+    <div class="quiz-question">Q. 마야 문명의 붕괴 주요 원인으로 옳지 않은 것은?</div>
+    <div class="quiz-options">
+      <button data-correct="false">A. 산림 남벌</button>
+      <button data-correct="false">B. 가뭄</button>
+      <button data-correct="true">C. 화석연료 사용 증가</button>
+      <button data-correct="false">D. 물 부족</button>
+    </div>
+    <div id="quizResult"></div>
+  </section>
+
+  <!-- === 랭킹 섹션 === -->
+  <section id="ranking">
+    <h2>🏆 실천 랭킹</h2>
+    <p>당신의 활동 점수를 기준으로 EcoHistory 등급이 부여됩니다.</p>
+    <div id="rankList"></div>
+  </section>
+
+  <footer>
+    <p>© 2025 EcoHistory | 역사로 배우는 지속 가능한 사회</p>
+  </footer>
+
+  <script>
+    // === LocalStorage 데이터 ===
+    let missions = JSON.parse(localStorage.getItem('missions')) || [];
+    let points = JSON.parse(localStorage.getItem('points')) || 0;
+
+    const missionForm = document.getElementById('missionForm');
+    const missionInput = document.getElementById('missionInput');
+    const missionsDiv = document.getElementById('missions');
+    const pointsDisplay = document.getElementById('points');
+    const rankList = document.getElementById('rankList');
+    const progress = document.getElementById('progress');
+
+    function renderMissions() {
+      missionsDiv.innerHTML = missions.length
+        ? missions.map((m,i)=>`<p>✅ ${i+1}. ${m}</p>`).join('')
+        : "<p>아직 등록된 실천이 없습니다.</p>";
+      pointsDisplay.textContent = points;
+      progress.style.width = Math.min(points,100) + '%';
+      rankList.innerHTML = `
+        <p>🎯 현재 등급: <b>${points >= 100 ? 'Eco Master' : points >= 50 ? 'Green Leader' : 'Eco Starter'}</b></p>
+        <p>총 포인트: ${points}점</p>
+      `;
+    }
+
+    missionForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const text = missionInput.value.trim();
+      if (!text) return;
+      missions.push(text);
+      points += 10;
+      localStorage.setItem('missions', JSON.stringify(missions));
+      localStorage.setItem('points', JSON.stringify(points));
+      missionInput.value = '';
+      renderMissions();
+    });
+
+    // === 퀴즈 기능 ===
+    const quizButtons = document.querySelectorAll('.quiz-options button');
+    const quizResult = document.getElementById('quizResult');
+    quizButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const correct = btn.getAttribute('data-correct') === 'true';
+        quizResult.textContent = correct ? '정답입니다! 🌟' : '틀렸습니다. 다시 생각해보세요.';
+        quizResult.style.color = correct ? 'green' : 'red';
+      });
+    });
+
+    renderMissions();
+  </script>
+</body>
+</html>
